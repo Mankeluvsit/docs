@@ -41,3 +41,28 @@ Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/sett
 
 ### Resources
 - [Mintlify documentation](https://mintlify.com/docs)
+
+## Utility scripts
+
+### Subdomain searcher
+
+A small CLI tool is included at `./subdomain_searcher.py` to discover likely subdomains for a target domain using:
+- Certificate Transparency logs (`crt.sh`)
+- GitHub code search (optionally authenticated with `GITHUB_TOKEN`)
+- Hostnames found on the site's homepage
+- DNS brute-force against common prefixes (or a custom wordlist)
+
+Usage:
+
+```bash
+python3 subdomain_searcher.py example.com
+python3 subdomain_searcher.py example.com --json
+python3 subdomain_searcher.py example.com --wordlist my-prefixes.txt --workers 50
+python3 subdomain_searcher.py example.com --github-token <token> --json
+```
+
+Run tests:
+
+```bash
+python3 -m unittest discover -s tests -p "test_*.py"
+```
